@@ -19,7 +19,7 @@
 | `matplotlib` | ≥ 3.5 |
 | Python | ≥ 3.10 |
 | Device | cuda / cpu |
-| ОС | любая (Windows / Linux / macOS) | |  
+| ОС | любая (Windows / Linux / macOS) |   
 
 ## Конфигурация
 
@@ -48,9 +48,14 @@ Loss: cross_entropy (next-token prediction, сдвиг на 1 токен)
 
 ### Google Colab
 
-1. **Открыть ноутбуки в Colab.**
+1. Открыть `dz1-attention.ipynb` (и `dz1-bughunt.ipynb`) в Colab.
 2. `Runtime → Restart and run all`.
-3. Дождаться окончания проверок в каждом ноутбуке 
+3. Дождаться:
+   ```
+   пройдено 17 из 17
+   Все проверки зелёные.
+   ```
+ 4. В конце `dz1-bughunt.ipynb` появятся `loss.png` и пример генерации.   
 
 ### Локально (VS Code)
 
@@ -117,6 +122,10 @@ if torch.cuda.is_available():
     torch.cuda.manual_seed_all(SEED)
 torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
+
+
+torch.manual_seed(SEED)   # сброс RNG перед созданием модели
+model = MiniGPT(cfg)
 ```
 
 ### Выполнение  
